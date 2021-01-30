@@ -1,4 +1,5 @@
 import { AppBar, Toolbar, Typography, makeStyles, Button } from "@material-ui/core";
+import SearchBar from "material-ui-search-bar";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -7,6 +8,10 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#9342f5",
     paddingRight: "79px",
     paddingLeft: "25px",
+  },  
+  drawer: {
+    width: 240,
+    flexShrink: 0,
   },
   logo: {
     fontFamily: "Open Sans, sans-serif",
@@ -51,14 +56,20 @@ export default function Header() {
   const displayDesktop = () => {
     return (<Toolbar className={toolbar}>
         {aiMenagerieLogo}
+        <div>{searchBar}</div>
         <div>{getMenuButtons()}</div>
     </Toolbar>
     );
   };
-
+//TODO Make searchbar actually search?
+  const searchBar = (
+       <SearchBar  onChange={() => console.log('onChange')}
+       onRequestSearch={() => console.log('onRequestSearch')}
+    
+   />)
   const aiMenagerieLogo = (
     <Typography variant="h6" component="h1" className={logo}>
-      AI_Menagerie
+      Menagerie
     </Typography>
   );
 
@@ -81,7 +92,7 @@ export default function Header() {
   };
   return (
     <header>
-      <AppBar className={header}>{displayDesktop()}</AppBar>
+      <AppBar position="fixed" className={header}>{displayDesktop()}</AppBar>
     </header>
   );
 }
