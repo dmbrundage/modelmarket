@@ -1,7 +1,9 @@
-import { AppBar, Toolbar, Typography, makeStyles, Button } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, makeStyles, Button, Link } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterL } from "react-router-dom";
+import HomeIcon from '@material-ui/icons/Home';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -45,12 +47,17 @@ const headersData = [
       href: "/Profile",
     },
     {
-      label: "Log Out",
-      href: "/logout",
+      label: "Log In",
+      href: "/Login",
     },
   ];
 
 export default function Header() {
+  
+  const RouteChange=(linkPath)=> {
+    let history = useHistory();
+    history.push(linkPath);
+  }
   const { header, logo, menuButton, toolbar } = useStyles();
 
   const displayDesktop = () => {
@@ -61,6 +68,7 @@ export default function Header() {
     </Toolbar>
     );
   };
+
 //TODO Make searchbar actually search?
   const searchBar = (
        <SearchBar  onChange={() => console.log('onChange')}
@@ -68,25 +76,28 @@ export default function Header() {
     
    />)
   const aiMenagerieLogo = (
-    <Typography variant="h6" component="h1" className={logo}>
-      Menagerie
-    </Typography>
-  );
+    <React.Fragment>
+    <Typography variant="h6" component="h1" className={logo}
+    ><Link href="/" onClick={RouteChange(Link.href)} color= "inherit">
 
+      Menagerie
+      </Link>
+    </Typography></React.Fragment>
+  );
   const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <Button
-          {...{
-            key: label,
-            color: "inherit",
-            to: href,
-            component: RouterLink,
-            className: menuButton
-          }}
+
+        <Button key = {label}
+            color= "inherit"
+            to={href}
+            component= {RouterL}
+            className={menuButton}
+          
         >
           {label}
         </Button>
+        
       );
     });
   };
