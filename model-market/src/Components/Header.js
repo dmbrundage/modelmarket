@@ -1,7 +1,7 @@
 import { AppBar, Toolbar, Typography, makeStyles, Button, Link } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
 import React from "react";
-import { Link as RouterL } from "react-router-dom";
+import { Link as RouterL , Redirect} from "react-router-dom";
 import HomeIcon from '@material-ui/icons/Home';
 import { useHistory } from 'react-router-dom';
 
@@ -35,8 +35,8 @@ const useStyles = makeStyles(() => ({
 
 const headersData = [
     {
-      label: "Data",
-      href: "/data",
+      label: "Submit",
+      href: "/Submit",
     },
     {
       label: "Models",
@@ -90,12 +90,13 @@ export default function Header() {
 
         <Button key = {label}
             color= "inherit"
-            to={href}
-            component= {RouterL}
+            //to={href}
+            //component= {RouterL}
             className={menuButton}
-          
-        >
+        
+        ><Link href={href} onClick={RouteChange(Link.href)} color="inherit">
           {label}
+          </Link>
         </Button>
         
       );

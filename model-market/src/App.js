@@ -3,8 +3,9 @@ import './App.css';
 import Header from './Components/Header';
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
-import Login from './Components/Login';
-import Homepage from './Components/Homepage';
+import Loginpage from './pages/LoginPage';
+import Homepage from './pages/Homepage';
+import Submitpage from './pages/Submitpage';
 class App extends Component {
   render(){
   return (
@@ -12,7 +13,8 @@ class App extends Component {
     <Router>
      <div className="App">
     <Route exact path='/' component={Homepage}/>
-    <Route path="/Login" component={Login} />
+    <Route exact path="/Login" component={Loginpage} />
+    <Route exact path="/Submit" component={Submitpage} />
     </div>
   </Router>
   </Switch>  );
