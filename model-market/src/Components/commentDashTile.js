@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Favorites() {
+export default function Comments() {
     const classes = useStyles();
     return (
         <React.Fragment>
