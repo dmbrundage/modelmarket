@@ -1,12 +1,7 @@
-import React from 'react'
-
-function About(){
-    return (
-        <React.Fragment><h1>About</h1>
-        <p>testing this</p>
-        
-        </React.Fragment>
-    )    
+if (card['faces'].length <= 5 ) {
+    {card['faces'].map(face => (
+      <Avatar className={classes.avatar} key={face} src={face} style={{ height: '30px', width: '30px' }} />
+    ))}
+} else {
+//  block of code to be executed if the condition is false
 }
-
-export default About;

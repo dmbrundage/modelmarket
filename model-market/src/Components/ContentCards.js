@@ -18,6 +18,11 @@ import Collapse from '@material-ui/core/Collapse';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
+import CardActionArea from "@material-ui/core/CardActionArea";
+import ArrowUpwardSharpIcon from '@material-ui/icons/ArrowUpwardSharp';
+import ArrowDownwardSharpIcon from '@material-ui/icons/ArrowDownwardSharp';
+import Avatar from "@material-ui/core/Avatar";
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,6 +58,13 @@ const useStyles = makeStyles((theme) => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)',
+  },  
+  avatar: {
+    display: "inline-block",
+    border: "2px solid white",
+    "&:not(:first-of-type)": {
+      marginLeft: -theme.spacing.unit
+    }
   },
 
 }));
@@ -64,25 +76,43 @@ const cards = [
       "https://storage.googleapis.com/site-assets-aim/wsi.jfif",
     desc: "Whole Slide Image",
     title: "HoVer-Net Nuclei Segmentation",
-    tag: ['Computer Vision', 'PyTorch']
+    tag: ['Computer Vision', 'PyTorch'],
+    faces:[
+      'https://i.pravatar.cc/300?img=1',
+      'https://i.pravatar.cc/300?img=2',
+      'https://i.pravatar.cc/300?img=3',
+      'https://i.pravatar.cc/300?img=4',
+      'https://i.pravatar.cc/300?img=1',
+      'https://i.pravatar.cc/300?img=2',
+      'https://i.pravatar.cc/300?img=3',
+      'https://i.pravatar.cc/300?img=4',
+    ]
   },
   {
     img:
       "https://storage.googleapis.com/site-assets-aim/ner.png",
     desc: "Clinical Pathology Notes",
-    title: "Named Entity Recognition"
+    title: "Named Entity Recognition",
+    faces:[
+      'https://i.pravatar.cc/300?img=1',
+      'https://i.pravatar.cc/300?img=2'
+    ]
   },
   {
     img:
       "https://storage.googleapis.com/site-assets-aim/k-means2.jpg",
     desc: "Unsupervised Example",
-    title: "KMeans Clustering"
+    title: "KMeans Clustering",
+    faces:[]
   },
   {
     img:
       "https://storage.googleapis.com/site-assets-aim/classifier.png",
     desc: "Binary Classifier",
-    title: "Generic Machine Learning Classification"
+    title: "Generic Machine Learning Classification",
+    faces:[
+      'https://i.pravatar.cc/300?img=4'
+    ]
   }
 ];
 
@@ -112,12 +142,23 @@ export default function ContentContainer() {
         {cards.map((card, index) => (
           <Grid item key md={4}>
             <Card className={classes.card}>
+            <CardActionArea href="/discuss">
               <CardMedia
                 className={classes.cardMedia}
                 image={card.img}
                 title="Image title"
-              />
+              /></CardActionArea>
+              
               <CardContent className={classes.cardContent}>
+              <IconButton className={clsx(classes.favoriteIcon)}
+                  onClick={() => handleFavoriteClick(index)}
+                  aria-label="Favorite"
+                  color={fav ? "primary" : "secondary"}>
+                  <ArrowUpwardSharpIcon/>
+                </IconButton>
+                <IconButton>
+                  <ArrowDownwardSharpIcon/>
+                </IconButton>
                 <Typography gutterBottom variant="h5" component="h2">
                   {card.title}
                 </Typography>
@@ -147,6 +188,10 @@ export default function ContentContainer() {
                 >
                   <ExpandMoreIcon />
                 </IconButton>
+                <AvatarGroup max={5} spacing='small'>
+                {card['faces'].map(face => (
+      <Avatar className={classes.avatar} key={face} src={face} style={{ height: '30px', width: '30px' }} />
+    ))}</AvatarGroup>
               </CardActions>
               <Collapse in={expanded === index} timeout="auto" unmountOnExit>
                 <CardContent>
@@ -154,8 +199,9 @@ export default function ContentContainer() {
                   <Typography paragraph>Performance Metrics:</Typography>
                   <Typography paragraph>Notes:</Typography>
                 </CardContent>
+
               </Collapse>
-            </Card>
+              </Card>
           </Grid>
         ))}
       </Grid>
