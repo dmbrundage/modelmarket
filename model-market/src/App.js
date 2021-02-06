@@ -9,6 +9,7 @@ import Submitpage from './pages/Submitpage';
 import Discussionpage from './pages/DiscussionPage';
 import Dashboardpage from './pages/UserDashboard';
 class App extends Component {
+
   render() {
     return (
       <Switch>

@@ -1,0 +1,48 @@
+[{
+    "img":
+      "https://storage.googleapis.com/site-assets-aim/face-algorithm.png",
+    "desc": "Smiling Detection in Images",
+    "title": "Smiling Detection in Images",
+    "tags": ["CV", "PyTorch"],
+    "faces": [
+      "https://i.pravatar.cc/300?img=1",
+      "https://i.pravatar.cc/300?img=2",
+      "https://i.pravatar.cc/300?img=3"
+    ],
+    "cardDetails": {
+      "modelDetails": "Developed by researchers at Google and University of Toronto, 2018 v1. Convolutional Neural Network. Pretrained for face recognition and then fine-tuned with cross-entropy loss for binary smiling classification.",
+      "intendedUse": "Intended to be used for fun applications, such as creating cartoon smiles on real images; augmentative applications, such as providing details for people who are blind; or assisting applications such as automatically finding smiling photos.Particularly intended for younger audiences. Not suitable for emotion detection or determining affect; smiles were annotated based on physical appearance, and not underlying emotions",
+      "factors": "Based on known problems with computer vision face technology, potential relevant factors include groups for gender, age, race, and Fitzpatrick skin type hardware factors of camera type and lens type; and environmental factors of lighting and humidity. Evaluation factors are gender and age group, as annotated in the publicly available dataset CelebA [36]. Further possible factors not currently available in a public smiling dataset. Gender and age determined by third-party annotators based on visual presentation, following a set of examples of male/female gender and young/old age",
+      "metrics": "Evaluation metrics include False Positive Rate and False Negative Rate tom easure disproportionate model performance errors across subgroups. False Discovery Rate and False Omission Rate, which measure the fraction of negative (not smiling) and positive (smiling) predictions that are incorrectly predicted to be positive and negative, respectively, are also reported. [48] Together, these four metrics provide values for different errors that can be calculated from the confusion matrix for binary classification systems. These also correspond to metrics in recent definitions of “fairness” in machine learning (cf. [6, 26]), where parity across subgroups for different metrics correspond to different fairness criteria. 95% confidence intervals calculated with bootstrap resampling. All metrics reported at the .5 decision threshold",
+      "trainEvalData": "Training Data: CelebA [36], training data split. Evaluation Data: CelebA [36], test data split. Chosen as a basic proof-of-concept.",
+      "considerations": ""
+    }
+
+  },
+{
+  "img":
+     "https://storage.googleapis.com/site-assets-aim/wsi.jfif",
+  "desc": "Whole Slide Image",
+  "title": "HoVer-Net Nuclei Segmentation",
+  "tags": ["CV", "TensorFlow"],
+  "faces": [
+    "https://i.pravatar.cc/300?img=1",
+    "https://i.pravatar.cc/300?img=3",
+    "https://i.pravatar.cc/300?img=4",
+    "https://i.pravatar.cc/300?img=1",
+    "https://i.pravatar.cc/300?img=2",
+    "https://i.pravatar.cc/300?img=3",
+    "https://i.pravatar.cc/300?img=4"
+  ],
+  "cardDetails": {
+    "modelDetails": "",
+    "intendedUse": "",
+    "factors": "",
+    "metrics": "",
+    "trainEvalData": "",
+    "considerations": ""
+  }
+}
+
+]
+

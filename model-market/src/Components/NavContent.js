@@ -13,6 +13,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import ImageIcon from '@material-ui/icons/Image';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import MemoryIcon from '@material-ui/icons/Memory';
+import { SettingsInputAntennaTwoTone } from '@material-ui/icons';
 
 const drawerWidth = 250;
 //theme fo classes
@@ -72,11 +73,12 @@ var iconDict = {
 
 //start of sidebar drawer code
 
-export default function ClippedDrawer() {
+export default function ClippedDrawer(props) {
   const classes = useStyles();
-  const handleFilterClick = i => {
-    console.log(i)
-  };
+  const updateShared = i => {
+      props.updateShared(i);
+     
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -92,7 +94,7 @@ export default function ClippedDrawer() {
         <div className={classes.drawerContainer}>
           <List>
             {['Computer Vision', 'Natural Language Processing', 'Unsupervised Learning', 'Machine Learning'].map((text, index) => (
-              <ListItem button key={text} onClick={() => handleFilterClick(text)}>
+              <ListItem button key={text} onClick={() => updateShared(text)}>
                 <ListItemIcon> {iconDict[index]} </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -100,8 +102,8 @@ export default function ClippedDrawer() {
           </List>
           <Divider />
           <List>
-            {['PyTorch', 'Keras', 'Tensorflow', 'Other'].map((text, index) => (
-              <ListItem button key={text}  onClick={() => handleFilterClick(text)}>
+            {['PyTorch', 'Keras', 'TensorFlow', 'Other'].map((text, index) => (
+              <ListItem button key={text}  onClick={() => updateShared(text)}>
                 <ListItemIcon>{<MemoryIcon/>}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
