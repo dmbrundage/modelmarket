@@ -27,7 +27,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Comment = ({ comments }) => {
+const Comment = (props) => {
+  const comments = props.comments
+  console.log(comments)
   const classes = useStyles();
   return (
     <List className={classes.root}>
@@ -37,7 +39,7 @@ const Comment = ({ comments }) => {
           <React.Fragment key={comment.id}>
             <ListItem key={comment.id} alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar alt="avatar" src={Faker.image.avatar()} />
+                <Avatar alt="avatar" src={comment.avatar} />
               </ListItemAvatar>
               <ListItemText
                 primary={
@@ -57,17 +59,17 @@ const Comment = ({ comments }) => {
                     </Typography>
                     {` - ${comment.body}`}
                     <p style={{ textAlign: "left", color: "gray" }}>
-              posted 1 minute ago
+                      posted 1 minute ago
             </p>
                   </>
                 }
               />
-                            <IconButton>
-                  <ArrowUpwardSharpIcon/>
-                </IconButton>
-                <IconButton>
-                  <ArrowDownwardSharpIcon/>
-                </IconButton>
+              <IconButton>
+                <ArrowUpwardSharpIcon />
+              </IconButton>
+              <IconButton>
+                <ArrowDownwardSharpIcon />
+              </IconButton>
             </ListItem>
             <Divider />
           </React.Fragment>

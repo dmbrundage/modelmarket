@@ -1,9 +1,13 @@
-[{
-    "img":
-      "https://storage.googleapis.com/site-assets-aim/face-algorithm.png",
+[
+  {
+    "modelid": 1,
+    "img": "https://storage.googleapis.com/site-assets-aim/face-algorithm.png",
     "desc": "Smiling Detection in Images",
     "title": "Smiling Detection in Images",
-    "tags": ["CV", "PyTorch"],
+    "tags": [
+      "CV",
+      "PyTorch"
+    ],
     "faces": [
       "https://i.pravatar.cc/300?img=1",
       "https://i.pravatar.cc/300?img=2",
@@ -16,33 +20,39 @@
       "metrics": "Evaluation metrics include False Positive Rate and False Negative Rate tom easure disproportionate model performance errors across subgroups. False Discovery Rate and False Omission Rate, which measure the fraction of negative (not smiling) and positive (smiling) predictions that are incorrectly predicted to be positive and negative, respectively, are also reported. [48] Together, these four metrics provide values for different errors that can be calculated from the confusion matrix for binary classification systems. These also correspond to metrics in recent definitions of “fairness” in machine learning (cf. [6, 26]), where parity across subgroups for different metrics correspond to different fairness criteria. 95% confidence intervals calculated with bootstrap resampling. All metrics reported at the .5 decision threshold",
       "trainEvalData": "Training Data: CelebA [36], training data split. Evaluation Data: CelebA [36], test data split. Chosen as a basic proof-of-concept.",
       "considerations": ""
-    }
-
+    },
+    "resettags": [
+      "Reset"
+    ]
   },
-{
-  "img":
-     "https://storage.googleapis.com/site-assets-aim/wsi.jfif",
-  "desc": "Whole Slide Image",
-  "title": "HoVer-Net Nuclei Segmentation",
-  "tags": ["CV", "TensorFlow"],
-  "faces": [
-    "https://i.pravatar.cc/300?img=1",
-    "https://i.pravatar.cc/300?img=3",
-    "https://i.pravatar.cc/300?img=4",
-    "https://i.pravatar.cc/300?img=1",
-    "https://i.pravatar.cc/300?img=2",
-    "https://i.pravatar.cc/300?img=3",
-    "https://i.pravatar.cc/300?img=4"
-  ],
-  "cardDetails": {
-    "modelDetails": "",
-    "intendedUse": "",
-    "factors": "",
-    "metrics": "",
-    "trainEvalData": "",
-    "considerations": ""
+  {
+    "modelid": 2,
+    "img": "https://storage.googleapis.com/site-assets-aim/wsi.jfif",
+    "desc": "Whole Slide Image",
+    "title": "HoVer-Net Nuclei Segmentation",
+    "tags": [
+      "CV",
+      "TensorFlow"
+    ],
+    "faces": [
+      "https://i.pravatar.cc/300?img=1",
+      "https://i.pravatar.cc/300?img=3",
+      "https://i.pravatar.cc/300?img=4",
+      "https://i.pravatar.cc/300?img=1",
+      "https://i.pravatar.cc/300?img=2",
+      "https://i.pravatar.cc/300?img=3",
+      "https://i.pravatar.cc/300?img=4"
+    ],
+    "cardDetails": {
+      "modelDetails": "",
+      "intendedUse": "",
+      "factors": "",
+      "metrics": "",
+      "trainEvalData": "",
+      "considerations": ""
+    },
+    "resettags": [
+      "Reset"
+    ]
   }
-}
-
 ]
-

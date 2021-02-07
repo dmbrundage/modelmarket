@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import clsx from 'clsx';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from "@material-ui/core/Button";
@@ -82,16 +82,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ContentContainer(props) {
-  
+
   const displaycards = props.dataprop
-  
+
   //console.log(torchcards)
   const classes = useStyles();
   //function to expand cards
   const [expanded, setExpanded] = React.useState(false);
   const [fav, setFav] = React.useState(true);
 
+  const modelSelected = i => {
+    props.modelSelected(i);
 
+  }
   const handleExpandClick = i => {
     setExpanded(expanded === i ? -1 : i);
   };
@@ -105,7 +108,7 @@ export default function ContentContainer(props) {
     //<CssBaseline />
     <Container className={classes.cardGrid} maxWidth="lg">
       {/* creating container grid for cards */}
-      
+
       <Grid container spacing={2}
         direction="row"
         justify="flex-start"
@@ -115,6 +118,7 @@ export default function ContentContainer(props) {
             <Card className={classes.card}>
               <CardActionArea href="/discuss">
                 <CardMedia
+                  onClick={() => modelSelected(card.modelid)}
                   className={classes.cardMedia}
                   image={card.img}
                   title="Image title"

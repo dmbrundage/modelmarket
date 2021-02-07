@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    zIndex:800,
+    zIndex: 800,
   },
   drawerPaper: {
     width: drawerWidth,
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 1
-  },  
+  },
   expand: {
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
@@ -62,22 +62,27 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
 
-  }));
+}));
 //this is a dictionary to populate the icons for the sidebar
 var iconDict = {
-    0: <ImageIcon/>,
-    1: <DescriptionIcon/>,
-    2: <BubbleChartIcon/>,
-    3: <ShowChartIcon/>
-  };
+  0: <ImageIcon />,
+  1: <DescriptionIcon />,
+  2: <BubbleChartIcon />,
+  3: <ShowChartIcon />
+};
 
 //start of sidebar drawer code
 
 export default function ClippedDrawer(props) {
   const classes = useStyles();
   const updateShared = i => {
-      props.updateShared(i);
-     
+    props.updateShared(i);
+
+  }
+
+  const resetfilter = i => {
+    props.resetfilter(i);
+
   }
   return (
     <div className={classes.root}>
@@ -103,16 +108,24 @@ export default function ClippedDrawer(props) {
           <Divider />
           <List>
             {['PyTorch', 'Keras', 'TensorFlow', 'Other'].map((text, index) => (
-              <ListItem button key={text}  onClick={() => updateShared(text)}>
-                <ListItemIcon>{<MemoryIcon/>}</ListItemIcon>
+              <ListItem button key={text} onClick={() => updateShared(text)}>
+                <ListItemIcon>{<MemoryIcon />}</ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
+            <Divider />
+            <List>
+              <ListItem button onClick={() => resetfilter("Reset")}>
+                <ListItemIcon>{<MemoryIcon />} </ListItemIcon>
+                <ListItemText primary="Reset" />
+
+              </ListItem>
+            </List>
           </List>
         </div>
       </Drawer>
     </div>
-    
+
   );
 }
 

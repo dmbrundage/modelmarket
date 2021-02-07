@@ -89,7 +89,7 @@ export default function Header() {
     return headersData.map(({ label, href }) => {
       return (
 
-        <Button key={label}
+        <Button variant="outlined" key={label}
           color="inherit"
           //to={href}
           //component= {RouterL}

@@ -30,8 +30,9 @@ const useStyles = makeStyles({
     color: "orange"
   }
 });
-export default function Discuss() {
-    const classes = useStyles();
+export default function Discuss(props) {
+  const classes = useStyles();
+  const commentdata = props.filtereddata
   return (
     <ThemeProvider>
       <CssBaseline>
@@ -48,25 +49,25 @@ export default function Discuss() {
             </Grid>
           </Grid>
           <TextField
-          id="outlined-multiline-static"
-          label="Post Comment"
-          multiline
-          rows={2}
-          variant="outlined"
-          fullWidth
-          InputProps={{
-            startAdornment: (
+            id="outlined-multiline-static"
+            label="Post Comment"
+            multiline
+            rows={2}
+            variant="outlined"
+            fullWidth
+            InputProps={{
+              startAdornment: (
                 <IconButton>
-              <InputAdornment position='end'>
-              <Button variant="outlined" color="secondary">
-        Submit
+                  <InputAdornment position='end'>
+                    <Button variant="outlined" color="secondary">
+                      Submit
       </Button>
-              </InputAdornment>
-              </IconButton>
-            ),
-          }}
-        />
-          <Comments />
+                  </InputAdornment>
+                </IconButton>
+              ),
+            }}
+          />
+          <Comments commentdata={commentdata} />
         </Container>
       </CssBaseline>
     </ThemeProvider>
