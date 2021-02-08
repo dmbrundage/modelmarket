@@ -46,6 +46,11 @@ class App extends Component {
   myFunction2 = () => {
     const { filtered_comment_data } = this.state;
   }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps)
+    console.log(this.state)
+  }
   render() {
     console.log(this.state.modelid)
     return (

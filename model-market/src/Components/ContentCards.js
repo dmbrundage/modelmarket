@@ -24,7 +24,7 @@ import ArrowDownwardSharpIcon from '@material-ui/icons/ArrowDownwardSharp';
 import Avatar from "@material-ui/core/Avatar";
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Badge from "@material-ui/core/Badge";
-
+import { Link as RLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -116,13 +116,14 @@ export default function ContentContainer(props) {
         {displaycards.map((card, index) => (
           <Grid item key md={4}>
             <Card className={classes.card}>
-              <CardActionArea href="/discuss">
-                <CardMedia
-                  onClick={() => modelSelected(card.modelid)}
-                  className={classes.cardMedia}
-                  image={card.img}
-                  title="Image title"
-                /></CardActionArea>
+              <CardActionArea>
+                <RLink to="/discuss">
+                  <CardMedia
+                    onClick={() => modelSelected(card.modelid)}
+                    className={classes.cardMedia}
+                    image={card.img}
+                    title="Image title"
+                  /></RLink></CardActionArea>
 
               <CardContent className={classes.cardContent}>
                 <IconButton className={clsx(classes.favoriteIcon)}
