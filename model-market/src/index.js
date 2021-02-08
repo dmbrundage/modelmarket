@@ -4,12 +4,12 @@ import "./index.css";
 import App from "./App.js";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
-import Header from './Components/Header';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    <Header/>
+
       <App />
     </Router>
   </React.StrictMode>,

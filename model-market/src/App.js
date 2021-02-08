@@ -1,28 +1,49 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Components/Header';
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, withRouter } from "react-router-dom";
 import { Route } from "react-router-dom";
 import Loginpage from './pages/LoginPage';
 import Homepage from './pages/Homepage';
 import Submitpage from './pages/Submitpage';
 import Discussionpage from './pages/DiscussionPage';
 import Dashboardpage from './pages/UserDashboard';
-import * as comment_data from './pages/data/comment_file';
-import * as model_data from './pages/data/model_file';
+//import * as comment_data from './pages/data/comment_file';
+//import * as model_data from './pages/data/model_file';
+
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      model_data: model_data['default'],
-      comment_data: comment_data['default'],
+      model_data: [],
+      comment_data: [],
       inputvalue: "",
-      filtereddata: model_data['default'],
-      filtered_comment_data: comment_data['default'],
+      filtereddata: [],
+      filtered_comment_data: [],
       modelid: 0
     };
 
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:5000/api/comments')
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ comment_data: data }, this.myFunction)
+        this.setState({ filtered_comment_data: data }, this.myFunction)
+        console.log(data)
+      })
+      .catch(console.log)
+
+    fetch('http://localhost:5000/api/models')
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ model_data: data }, this.myFunction)
+        this.setState({ filtereddata: data }, this.myFunction)
+        console.log(data)
+      })
+      .catch(console.log)
   }
   filtervalue = shared_value => {
     console.log(shared_value)
@@ -52,14 +73,16 @@ class App extends Component {
     console.log(this.state)
   }
   render() {
-    console.log(this.state.modelid)
+
+    console.log(this.state.comment_data)
     return (
       < Switch >
         <Router>
+          <Header />
           <div className="App">
             <Route exact path='/' component={() => <Homepage data={this.state.model_data} filtereddata={this.state.filtereddata} filtervalue={this.filtervalue} resetfilter={this.resetfilter} modelSelected={this.modelSelected.bind(this)} />} />
             <Route exact path="/Login" component={Loginpage} />
-            <Route exact path="/Submit" component={Submitpage} />
+            <Route exact path="/Submit" component={withRouter(Submitpage)} />
             <Route exact path="/Discuss" component={() => <Discussionpage filtereddata={this.state.filtered_comment_data} modelid={this.state.modelid} />} />
             <Route exact path="/Profile" component={Dashboardpage} />
           </div>

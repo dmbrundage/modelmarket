@@ -1,7 +1,7 @@
 import { AppBar, Toolbar, Typography, makeStyles, Button, Link } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
 import React from "react";
-import { Link as RouterL, Redirect } from "react-router-dom";
+import { Link as RLink, Redirect } from "react-router-dom";
 import HomeIcon from '@material-ui/icons/Home';
 import { useHistory } from 'react-router-dom';
 
@@ -21,12 +21,14 @@ const useStyles = makeStyles(() => ({
     fontWeight: 800,
     color: "#FFFEFE",
     textAlign: "left",
+    textDecoration: 'none'
   },
   menuButton: {
     fontFamily: "Montserrat, sans-serif",
     fontWeight: 700,
     size: "18px",
     marginLeft: "38px",
+    color: "#FFFEFE",
   },
   toolbar: {
     display: "flex",
@@ -79,26 +81,26 @@ export default function Header() {
   const aiMenagerieLogo = (
     <React.Fragment>
       <Typography variant="h6" component="h1" className={logo}
-      ><Link href="/" onClick={RouteChange(Link.href)} color="inherit">
+      ><RLink to="/" className={logo}>
 
           Menagerie
-      </Link>
+      </RLink>
       </Typography></React.Fragment>
   );
   const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
       return (
+        <RLink to={href} className={logo}>
+          <Button variant="outlined" key={label}
+            color="inherit"
+            //to={href}
+            //component= {RouterL}
+            className={menuButton}
 
-        <Button variant="outlined" key={label}
-          color="inherit"
-          //to={href}
-          //component= {RouterL}
-          className={menuButton}
-
-        ><Link href={href} onClick={RouteChange(Link.href)} color="inherit">
+          >
             {label}
-          </Link>
-        </Button>
+
+          </Button></RLink>
 
       );
     });

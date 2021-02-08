@@ -54,5 +54,71 @@
     "resettags": [
       "Reset"
     ]
+  },
+  {
+    "modelid": 3,
+    "img": "https://storage.googleapis.com/site-assets-aim/ner.png",
+    "desc": "NLP Card Example",
+    "title": "Named Entity Recognition on Notes",
+    "tags": [
+      "NLP",
+      "Keras"
+    ],
+    "faces": [],
+    "cardDetails": {
+      "modelDetails": "",
+      "intendedUse": "",
+      "factors": "",
+      "metrics": "",
+      "trainEvalData": "",
+      "considerations": ""
+    },
+    "resettags": [
+      "Reset"
+    ]
+  },
+  {
+    "modelid": 4,
+    "img": "https://storage.googleapis.com/site-assets-aim/k-means2.jpg",
+    "desc": "Card Example 4",
+    "title": "Clustering Model XYZ",
+    "tags": [
+      "CV",
+      "TensorFlow"
+    ],
+    "faces": [],
+    "cardDetails": {
+      "modelDetails": "",
+      "intendedUse": "",
+      "factors": "",
+      "metrics": "",
+      "trainEvalData": "",
+      "considerations": ""
+    },
+    "resettags": [
+      "Reset"
+    ]
+  },
+  {
+    "modelid": 5,
+    "img": "https://storage.googleapis.com/site-assets-aim/classifier.png",
+    "desc": "Classification Example",
+    "title": "Simple Machine Learning Classifier",
+    "tags": [
+      "CV",
+      "TensorFlow"
+    ],
+    "faces": [],
+    "cardDetails": {
+      "modelDetails": "",
+      "intendedUse": "",
+      "factors": "",
+      "metrics": "",
+      "trainEvalData": "",
+      "considerations": ""
+    },
+    "resettags": [
+      "Reset"
+    ]
   }
 ]

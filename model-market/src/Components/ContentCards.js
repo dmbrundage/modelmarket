@@ -25,6 +25,7 @@ import Avatar from "@material-ui/core/Avatar";
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Badge from "@material-ui/core/Badge";
 import { Link as RLink } from "react-router-dom";
+import { ListItemIcon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +53,9 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "56.25%" // 16:9
   },
   cardContent: {
-    flexGrow: 1
+    flexGrow: 1,
+    justify: "center",
+    alignItems: "center"
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -114,7 +117,7 @@ export default function ContentContainer(props) {
         justify="flex-start"
         alignItems="flex-start">
         {displaycards.map((card, index) => (
-          <Grid item key md={4}>
+          <Grid item key md={6}>
             <Card className={classes.card}>
               <CardActionArea>
                 <RLink to="/discuss">
@@ -129,7 +132,7 @@ export default function ContentContainer(props) {
                 <IconButton className={clsx(classes.favoriteIcon)}
                   onClick={() => handleFavoriteClick(index)}
                   aria-label="Favorite"
-                  color={fav ? "primary" : "secondary"}>
+                >
                   <ArrowUpwardSharpIcon />
                 </IconButton>
                 <IconButton>
@@ -143,20 +146,21 @@ export default function ContentContainer(props) {
                     <Badge className={classes.tags} badgeContent={tag} color="secondary">
                     </Badge></div>))}
               </CardContent>
-              <CardActions>
-                <IconButton aria-label="GitHub">
-                  <GitHubIcon />
+              <CardActions >
+
+                <IconButton aria-label="GitHub" >
+                  <GitHubIcon onClick={() => window.open(card['github'], "_blank")} />
                 </IconButton>
                 <IconButton aria-label="Share">
                   <ShareIcon />
                 </IconButton>
                 <IconButton aria-label="Download">
-                  <GetAppIcon />
+                  <GetAppIcon onClick={() => window.open(card['modelurl'], "_blank")} />
                 </IconButton>
                 <IconButton className={clsx(classes.favoriteIcon)}
                   onClick={() => handleFavoriteClick(index)}
                   aria-label="Favorite"
-                  color={fav ? "primary" : "secondary"}>
+                >
                   <FavoriteIcon />
                 </IconButton>
                 <IconButton

@@ -9,7 +9,7 @@ class Discussionpage extends React.Component {
     return (
 
       < div className="App" >
-        <Discuss filtereddata={this.props.filtereddata} />
+        <Discuss filtereddata={this.props.filtereddata} modelid={this.props.modelid} />
       </ div >
     );
   }

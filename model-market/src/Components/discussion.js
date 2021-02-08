@@ -28,12 +28,32 @@ const useStyles = makeStyles({
   },
   button: {
     color: "orange"
-  }
+  },
+  TextField: { color: 'white' }
 });
+
+
 export default function Discuss(props) {
+
+  const [comment, setComment] = useState('');
+
+  const handleSubmit = event => {
+    setComment(event)
+    event.preventDefault();
+    console.log('Comment:', comment);
+    props.filtereddata.push({ "avatar": "4", "email": "test.test", "body": comment, "modelid": props.modelid, "name": "test" });
+    document.getElementById("comment-form").reset();
+    //console.log(commentdata)
+
+    // You should see email and password in console.
+    // ..code to submit form to backend here...
+
+  }
+
   const classes = useStyles();
-  const commentdata = props.filtereddata
+  //const commentdata = props.filtereddata
   return (
+
     <ThemeProvider>
       <CssBaseline>
         <Container>
@@ -48,28 +68,37 @@ export default function Discuss(props) {
 
             </Grid>
           </Grid>
-          <TextField
-            id="outlined-multiline-static"
-            label="Post Comment"
-            multiline
-            rows={2}
-            variant="outlined"
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <IconButton>
-                  <InputAdornment position='end'>
-                    <Button variant="outlined" color="secondary">
-                      Submit
+          <form id="comment-form" onSubmit={handleSubmit}>
+            <TextField
+              onInput={e => setComment(e.target.value)}
+              style={{
+                backgroundColor: "white"
+              }}
+              id="outlined-multiline-static"
+              label="Post Comment"
+              multiline
+              rows={2}
+              variant="outlined"
+              fullWidth
+
+              InputProps={{
+                startAdornment: (
+                  <IconButton>
+                    <InputAdornment position='end'>
+                      <Button variant="outlined" color="secondary" type="submit">
+                        Submit
       </Button>
-                  </InputAdornment>
-                </IconButton>
-              ),
-            }}
-          />
-          <Comments commentdata={commentdata} />
+                    </InputAdornment>
+                  </IconButton>
+                ),
+              }}
+
+
+            /></form>
+          <Comments commentdata={props.filtereddata} />
         </Container>
       </CssBaseline>
     </ThemeProvider>
   );
+
 }
