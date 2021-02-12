@@ -8,7 +8,7 @@ const Multer = require('multer');
 const multer = Multer({
     storage: Multer.MemoryStorage,
     limits: {
-        fileSize: 100 * 1024 * 1024, // Maximum file size is 10MB
+        fileSize: 100 * 1024 * 1024, // Maximum file size is 100MB
     },
 });
 
