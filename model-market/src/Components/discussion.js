@@ -34,19 +34,43 @@ const useStyles = makeStyles({
 
 
 export default function Discuss(props) {
-
+  const handlecomment = (comment) => {
+    console.log(comment);
+    props.handleComment(comment)
+  }
   const [comment, setComment] = useState('');
 
   const handleSubmit = event => {
+
     setComment(event)
     event.preventDefault();
     console.log('Comment:', comment);
-    props.filtereddata.push({ "avatar": "4", "email": "test.test", "body": comment, "modelid": props.modelid, "name": "test" });
+    props.filtered_comment_data.push({ "postid": "54", "email": "test.dmb4002@med.cornell.edu", "body": comment, "modelid": props.modelid, "name": "David Brundage" });
     document.getElementById("comment-form").reset();
-    //console.log(commentdata)
 
-    // You should see email and password in console.
-    // ..code to submit form to backend here...
+    fetch('http://localhost:5000/api/comments', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: 'dmb4002@med.cornell.edu',
+        body: comment,
+        name: 'David Brundage',
+        modelid: props.modelid,
+        postid: 54
+      })
+    })
+    //TODO: Instead of grabbing all comments again maybe only grab the specific comment posted and push to state?
+    fetch('http://localhost:5000/api/comments')
+      .then(res => res.json())
+      .then((data) => {
+        handlecomment(data)
+        console.log(data)
+      })
+      .catch(console.log)
+    //handlecomment(props.filtered_comment_data)
 
   }
 
@@ -95,7 +119,7 @@ export default function Discuss(props) {
 
 
             /></form>
-          <Comments commentdata={props.filtereddata} />
+          <Comments filtered_comment_data={props.filtered_comment_data} />
         </Container>
       </CssBaseline>
     </ThemeProvider>

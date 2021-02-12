@@ -15,7 +15,7 @@ const commentSchema = new Schema({
         required: true
     },
     modelid: {
-        type: Number,
+        type: String,
         required: true
     },
     postid: {

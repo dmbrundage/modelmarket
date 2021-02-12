@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function PaymentForm() {
+export default function UploadModel() {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -30,11 +30,11 @@ export default function PaymentForm() {
                 multiple
                 type="file"
             />
-            <label htmlFor="raised-button-file">
-                <Button variant="contained" component="span" className={classes.button} >
-                    Upload
+
+            <Button variant="contained" component="span" className={classes.button} >
+                Upload
   </Button>
-            </label>
+
         </React.Fragment>
     );
 }

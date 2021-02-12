@@ -28,6 +28,6 @@ export default class Comments extends Component {
   render() {
     //console.log(this.props.commentdata)
     //const { comments, isFetching } = this.state;
-    return <Comment comments={this.props.commentdata} />;
+    return <Comment comments={this.props.filtered_comment_data} />;
   }
 }

@@ -1,8 +1,32 @@
 const express = require("express")
 const Post = require("./models/Comment")
-const Model = require("./models/Models") // new
+const Model = require("./models/Models")
+const uploadFile = require('./helpers/helpers')
 const router = express.Router()
+const Multer = require('multer');
 
+const multer = Multer({
+    storage: Multer.MemoryStorage,
+    limits: {
+        fileSize: 100 * 1024 * 1024, // Maximum file size is 10MB
+    },
+});
+
+router.post('/uploads', multer.single('file'), async (req, res, next) => {
+    try {
+        const myFile = req.file
+        const imageUrl = await uploadFile(myFile)
+
+        res
+            .status(200)
+            .json({
+                message: "Upload was successful",
+                data: imageUrl
+            })
+    } catch (error) {
+        next(error)
+    }
+})
 // Get all posts
 router.get("/comments", async (req, res) => {
     Post.find()
@@ -34,6 +58,10 @@ router.get("/models", async (req, res) => {
         .catch(err => console.log(err))
 })
 
+router.get("/models/:modelid", async (req, res) => {
+    const model = await Model.findOne({ modelid: req.params.modelid })
+    res.send(model)
+})
 
 router.post("/models", async (req, res) => {
     const post = new Model({

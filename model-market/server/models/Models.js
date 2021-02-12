@@ -3,19 +3,17 @@ const Schema = mongoose.Schema;
 
 const modelSchema = new Schema({
     desc: {
-        type: String,
-        required: true
+        type: String
     },
     title: {
         type: String,
         required: true
     },
     img: {
-        type: String,
-        required: true
+        type: String
     },
     modelid: {
-        type: Number,
+        type: String,
         required: true
     },
     tags: {
